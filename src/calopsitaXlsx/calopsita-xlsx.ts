@@ -1,5 +1,6 @@
 import XlsxPopulate from '../../xlsx/xlsx-populate.min.js'
 
+// Convert Json to Xlsx
 export class CalopsitaXlsx {
   public convertJsonToXlsx (data: Array<object>, filename: string, password?: string) {
     XlsxPopulate.fromBlankAsync()
