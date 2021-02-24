@@ -7,7 +7,7 @@ export class CalopsitaXlsx {
       const workbook = await XlsxPopulate.fromBlankAsync();
 
       const arrayOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        
+
       data.forEach((value, index) => {
         let arrayNamesValue = Object.keys(value);
         // Fill header
@@ -34,7 +34,6 @@ export class CalopsitaXlsx {
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
-            resolve (false);
           }
         } catch(err) {
           alert(err.message || err);

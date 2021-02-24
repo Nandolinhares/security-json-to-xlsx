@@ -39,8 +39,11 @@ const values = [
     password: 'teste32'
   }]
   
-const calopsitaXlsx = new CalopsitaXlsx()
-calopsitaXlsx.convertJsonToXlsx(values, `filename`, 'password')
+const handleClick = async (): Promise<any> => {
+    const calopsitaCsv = new CalopsitaXlsx()
+   
+    await calopsitaCsv.convertJsonToXlsx(values, 'filename', 'password');
+  }
 ```
 
 ## Author
