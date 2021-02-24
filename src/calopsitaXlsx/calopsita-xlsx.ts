@@ -34,6 +34,7 @@ export class CalopsitaXlsx {
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
+            resolve (false);
           }
         } catch(err) {
           alert(err.message || err);
