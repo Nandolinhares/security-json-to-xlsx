@@ -3,15 +3,17 @@ import XlsxPopulate from '../../xlsx/xlsx-populate.min.js'
 // Convert Json to Xlsx versão
 export class CalopsitaXlsx {
   public convertJsonToXlsx (data: Array<object>, filename: string, password?: string) {
-    XlsxPopulate.fromBlankAsync()
+    return XlsxPopulate.fromBlankAsync()
       .then(workbook => {
         const arrayOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         
         data.forEach((value, index) => {
           let arrayNamesValue = Object.keys(value);
+          // Fill header
           if(index < 26) {
             workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[index]}${1}`).value(Object.keys(value)[index]);
           }
+
           for(let i = 1; i <= Object.keys(value).length; i++) {
             workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[i - 1]}${index + 2}`).value(value[arrayNamesValue[i - 1]]);
           }
@@ -31,6 +33,7 @@ export class CalopsitaXlsx {
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
+            return false;
         }
     })
     .catch(function (err) {
