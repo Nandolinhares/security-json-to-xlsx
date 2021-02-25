@@ -69,6 +69,7 @@ export class CalopsitaXlsx {
           reject (new Error("Navigating to data URI is not supported in IE."));
         } else {
             location.href = "data:" + XlsxPopulate.MIME_TYPE + ";base64," + base64;
+            resolve(false);
         }
       } catch(error) {
           alert(error.message || error);
