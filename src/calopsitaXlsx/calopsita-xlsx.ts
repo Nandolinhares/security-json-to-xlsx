@@ -43,4 +43,37 @@ export class CalopsitaXlsx {
       }
     )
   }
+
+  public async convertJsonToXlsxBase64(data: Array<object>, filename: string, password?: string): Promise<any> {
+    return await new Promise(async (resolve, reject) => {
+      const workbook = await XlsxPopulate.fromBlankAsync();
+
+      const arrayOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+      data.forEach((value, index) => {
+        let arrayNamesValue = Object.keys(value);
+        // Fill header
+        if(index < 26) {
+          workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[index]}${1}`).value(Object.keys(value)[index]);
+        }
+
+        for(let i = 1; i <= Object.keys(value).length; i++) {
+          workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[i - 1]}${index + 2}`).value(value[arrayNamesValue[i - 1]]);
+        }
+      })
+
+      const base64 = await workbook.outputAsync({ password: password ? password : '', type: 'base64' });
+
+      try {
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          reject (new Error("Navigating to data URI is not supported in IE."));
+        } else {
+            location.href = "data:" + XlsxPopulate.MIME_TYPE + ";base64," + base64;
+        }
+      } catch(error) {
+          alert(error.message || error);
+          reject(error);
+      }
+    })
+  }
 }

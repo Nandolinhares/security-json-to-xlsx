@@ -42,8 +42,26 @@ const values = [
 const handleClick = async (): Promise<any> => {
     const calopsitaCsv = new CalopsitaXlsx()
    
-    await calopsitaCsv.convertJsonToXlsx(values, 'filename', 'password');
+   // With Password
+    await calopsitaCsv.convertJsonToXlsx(values, 'filename', 'your-password');
+
+   // Without Password
+    await calopsitaCsv.convertJsonToXlsx(values, 'filename');
   }
+```
+
+## Base64
+```sh
+// With Password
+await calopsitaXlsx.convertJsonToXlsxBase64(values, filename, '123');
+
+// Without Password
+await calopsitaXlsx.convertJsonToXlsxBase64(values, filename);
+```
+
+## Password Information
+```sh
+With password the loading will be a little bit longer than without password.
 ```
 
 ## Author
