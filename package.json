@@ -1,6 +1,6 @@
 {
   "name": "security-json-to-xlsx",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "scripts": {
@@ -13,6 +13,24 @@
     "build"
   ],
   "license": "MIT",
+  "keywords": [
+    "excel",
+    "json",
+    "json-to-excel",
+    "xlsx",
+    "csv",
+    "json-to-xslx",
+    "json2xlsx",
+    "json-to-csv",
+    "convert-json-to-xlsx",
+    "typescript",
+    "javascript"
+  ],
+  "homepage": "https://github.com/Nandolinhares/security-json-to-xlsx#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nandolinhares/security-json-to-xlsx"
+  },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.17",
