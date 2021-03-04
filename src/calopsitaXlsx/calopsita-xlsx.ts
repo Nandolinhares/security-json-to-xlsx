@@ -8,12 +8,12 @@ export class CalopsitaXlsx {
 
       const arrayOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+      for(let i = 1; i <= Object.keys(data[0]).length; i++) {
+        workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[i - 1]}${1}`).value(Object.keys(data[0])[i - 1]);
+      }
+
       data.forEach((value, index) => {
         let arrayNamesValue = Object.keys(value);
-        // Fill header
-        if(index < 26) {
-          workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[index]}${1}`).value(Object.keys(value)[index]);
-        }
 
         for(let i = 1; i <= Object.keys(value).length; i++) {
           workbook.sheet(0).name('Valores').cell(`${arrayOfLetters[i - 1]}${index + 2}`).value(value[arrayNamesValue[i - 1]]);
